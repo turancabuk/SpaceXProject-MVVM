@@ -14,6 +14,7 @@
 		5CD06F5228F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F5028F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld */; };
 		5CD06F5428F9B6C900BB9D1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CD06F5328F9B6C900BB9D1B /* Assets.xcassets */; };
 		5CD06F5728F9B6C900BB9D1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CD06F5528F9B6C900BB9D1B /* LaunchScreen.storyboard */; };
+		5CD06F6128F9B95100BB9D1B /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F6028F9B95100BB9D1B /* CellViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		5CD06F5328F9B6C900BB9D1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CD06F5628F9B6C900BB9D1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CD06F5828F9B6C900BB9D1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CD06F6028F9B95100BB9D1B /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				5CD06F4728F9B6C800BB9D1B /* AppDelegate.swift */,
 				5CD06F4928F9B6C800BB9D1B /* SceneDelegate.swift */,
 				5CD06F4B28F9B6C800BB9D1B /* ViewController.swift */,
+				5CD06F6028F9B95100BB9D1B /* CellViewController.swift */,
 				5CD06F4D28F9B6C800BB9D1B /* Main.storyboard */,
 				5CD06F5328F9B6C900BB9D1B /* Assets.xcassets */,
 				5CD06F5528F9B6C900BB9D1B /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD06F6128F9B95100BB9D1B /* CellViewController.swift in Sources */,
 				5CD06F4C28F9B6C800BB9D1B /* ViewController.swift in Sources */,
 				5CD06F4828F9B6C800BB9D1B /* AppDelegate.swift in Sources */,
 				5CD06F4A28F9B6C800BB9D1B /* SceneDelegate.swift in Sources */,
