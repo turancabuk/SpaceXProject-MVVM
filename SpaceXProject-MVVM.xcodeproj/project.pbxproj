@@ -15,6 +15,11 @@
 		5CD06F5428F9B6C900BB9D1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CD06F5328F9B6C900BB9D1B /* Assets.xcassets */; };
 		5CD06F5728F9B6C900BB9D1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CD06F5528F9B6C900BB9D1B /* LaunchScreen.storyboard */; };
 		5CD06F6128F9B95100BB9D1B /* CellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F6028F9B95100BB9D1B /* CellViewController.swift */; };
+		5CD06F6328F9BEF700BB9D1B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F6228F9BEF700BB9D1B /* DetailViewController.swift */; };
+		5CD06F6628F9C0D300BB9D1B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5CD06F6528F9C0D300BB9D1B /* Kingfisher */; };
+		5CD06F6B28F9C1E700BB9D1B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F6A28F9C1E700BB9D1B /* MainViewModel.swift */; };
+		5CD06F7328F9C35400BB9D1B /* MainWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F7228F9C35400BB9D1B /* MainWebService.swift */; };
+		5CD06F7528FDB94900BB9D1B /* SpaceXModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F7428FDB94900BB9D1B /* SpaceXModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,10 @@
 		5CD06F5628F9B6C900BB9D1B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CD06F5828F9B6C900BB9D1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CD06F6028F9B95100BB9D1B /* CellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewController.swift; sourceTree = "<group>"; };
+		5CD06F6228F9BEF700BB9D1B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5CD06F6A28F9C1E700BB9D1B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		5CD06F7228F9C35400BB9D1B /* MainWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWebService.swift; sourceTree = "<group>"; };
+		5CD06F7428FDB94900BB9D1B /* SpaceXModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD06F6628F9C0D300BB9D1B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,17 +70,93 @@
 		5CD06F4628F9B6C800BB9D1B /* SpaceXProject-MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				5CD06F4728F9B6C800BB9D1B /* AppDelegate.swift */,
-				5CD06F4928F9B6C800BB9D1B /* SceneDelegate.swift */,
-				5CD06F4B28F9B6C800BB9D1B /* ViewController.swift */,
-				5CD06F6028F9B95100BB9D1B /* CellViewController.swift */,
-				5CD06F4D28F9B6C800BB9D1B /* Main.storyboard */,
-				5CD06F5328F9B6C900BB9D1B /* Assets.xcassets */,
-				5CD06F5528F9B6C900BB9D1B /* LaunchScreen.storyboard */,
-				5CD06F5828F9B6C900BB9D1B /* Info.plist */,
-				5CD06F5028F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld */,
+				5CD06F6F28F9C31200BB9D1B /* WebServices */,
+				5CD06F6E28F9C27D00BB9D1B /* SupportingFiles */,
+				5CD06F6D28F9C23F00BB9D1B /* Screens */,
+				5CD06F6828F9C1B200BB9D1B /* Model */,
+				5CD06F6728F9C19600BB9D1B /* App */,
 			);
 			path = "SpaceXProject-MVVM";
+			sourceTree = "<group>";
+		};
+		5CD06F6728F9C19600BB9D1B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F4728F9B6C800BB9D1B /* AppDelegate.swift */,
+				5CD06F4928F9B6C800BB9D1B /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5CD06F6828F9C1B200BB9D1B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F6C28F9C20B00BB9D1B /* DetailViewModel */,
+				5CD06F6928F9C1BC00BB9D1B /* MainViewModel */,
+				5CD06F7428FDB94900BB9D1B /* SpaceXModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5CD06F6928F9C1BC00BB9D1B /* MainViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F6A28F9C1E700BB9D1B /* MainViewModel.swift */,
+			);
+			path = MainViewModel;
+			sourceTree = "<group>";
+		};
+		5CD06F6C28F9C20B00BB9D1B /* DetailViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailViewModel;
+			sourceTree = "<group>";
+		};
+		5CD06F6D28F9C23F00BB9D1B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F4D28F9B6C800BB9D1B /* Main.storyboard */,
+				5CD06F4B28F9B6C800BB9D1B /* ViewController.swift */,
+				5CD06F6028F9B95100BB9D1B /* CellViewController.swift */,
+				5CD06F6228F9BEF700BB9D1B /* DetailViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5CD06F6E28F9C27D00BB9D1B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F5328F9B6C900BB9D1B /* Assets.xcassets */,
+				5CD06F5028F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld */,
+				5CD06F5828F9B6C900BB9D1B /* Info.plist */,
+				5CD06F5528F9B6C900BB9D1B /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5CD06F6F28F9C31200BB9D1B /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F7128F9C32F00BB9D1B /* DetailWebService */,
+				5CD06F7028F9C31C00BB9D1B /* MainWebService */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		5CD06F7028F9C31C00BB9D1B /* MainWebService */ = {
+			isa = PBXGroup;
+			children = (
+				5CD06F7228F9C35400BB9D1B /* MainWebService.swift */,
+			);
+			path = MainWebService;
+			sourceTree = "<group>";
+		};
+		5CD06F7128F9C32F00BB9D1B /* DetailWebService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailWebService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +175,9 @@
 			dependencies = (
 			);
 			name = "SpaceXProject-MVVM";
+			packageProductDependencies = (
+				5CD06F6528F9C0D300BB9D1B /* Kingfisher */,
+			);
 			productName = "SpaceXProject-MVVM";
 			productReference = 5CD06F4428F9B6C800BB9D1B /* SpaceXProject-MVVM.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +206,9 @@
 				Base,
 			);
 			mainGroup = 5CD06F3B28F9B6C800BB9D1B;
+			packageReferences = (
+				5CD06F6428F9C0D300BB9D1B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 5CD06F4528F9B6C800BB9D1B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,11 +236,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD06F6B28F9C1E700BB9D1B /* MainViewModel.swift in Sources */,
 				5CD06F6128F9B95100BB9D1B /* CellViewController.swift in Sources */,
 				5CD06F4C28F9B6C800BB9D1B /* ViewController.swift in Sources */,
+				5CD06F7328F9C35400BB9D1B /* MainWebService.swift in Sources */,
 				5CD06F4828F9B6C800BB9D1B /* AppDelegate.swift in Sources */,
+				5CD06F6328F9BEF700BB9D1B /* DetailViewController.swift in Sources */,
 				5CD06F4A28F9B6C800BB9D1B /* SceneDelegate.swift in Sources */,
 				5CD06F5228F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld in Sources */,
+				5CD06F7528FDB94900BB9D1B /* SpaceXModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +393,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6N4HMYH8YX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SpaceXProject-MVVM/Info.plist";
+				INFOPLIST_FILE = "SpaceXProject-MVVM/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -325,7 +421,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6N4HMYH8YX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "SpaceXProject-MVVM/Info.plist";
+				INFOPLIST_FILE = "SpaceXProject-MVVM/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -366,6 +462,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5CD06F6428F9C0D300BB9D1B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5CD06F6528F9C0D300BB9D1B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5CD06F6428F9C0D300BB9D1B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		5CD06F5028F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld */ = {
