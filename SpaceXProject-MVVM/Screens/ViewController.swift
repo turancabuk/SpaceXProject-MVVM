@@ -7,12 +7,13 @@
 
 import UIKit
 import Kingfisher
+import CoreData
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
    
     @IBOutlet weak var tableView: UITableView!
-    
+
     var viewModel: MainViewModel?
     
     var selectedRocket: RocketResponse!
@@ -79,7 +80,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             destinationVC.chosenRocket = selectedRocket
         }
     }
+
     @IBAction func favButtonClicked(_ sender: Any) {
+        
+       
+
     }
 }
 

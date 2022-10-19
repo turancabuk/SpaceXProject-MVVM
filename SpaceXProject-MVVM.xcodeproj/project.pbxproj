@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C41352129005D680094015B /* CoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41352029005D680094015B /* CoreDataModel.swift */; };
 		5CD06F4828F9B6C800BB9D1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F4728F9B6C800BB9D1B /* AppDelegate.swift */; };
 		5CD06F4A28F9B6C800BB9D1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F4928F9B6C800BB9D1B /* SceneDelegate.swift */; };
 		5CD06F4C28F9B6C800BB9D1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD06F4B28F9B6C800BB9D1B /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C41352029005D680094015B /* CoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataModel.swift; sourceTree = "<group>"; };
 		5CD06F4428F9B6C800BB9D1B /* SpaceXProject-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SpaceXProject-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD06F4728F9B6C800BB9D1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5CD06F4928F9B6C800BB9D1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				5CD06F6D28F9C23F00BB9D1B /* Screens */,
 				5CD06F6828F9C1B200BB9D1B /* Model */,
 				5CD06F6728F9C19600BB9D1B /* App */,
+				5C41352029005D680094015B /* CoreDataModel.swift */,
 			);
 			path = "SpaceXProject-MVVM";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				5CD06F6328F9BEF700BB9D1B /* DetailViewController.swift in Sources */,
 				5CD06F4A28F9B6C800BB9D1B /* SceneDelegate.swift in Sources */,
 				5CD06F5228F9B6C800BB9D1B /* SpaceXProject_MVVM.xcdatamodeld in Sources */,
+				5C41352129005D680094015B /* CoreDataModel.swift in Sources */,
 				5CD06F7528FDB94900BB9D1B /* SpaceXModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

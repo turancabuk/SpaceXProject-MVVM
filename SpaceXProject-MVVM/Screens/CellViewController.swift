@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CellViewController: UITableViewCell {
 
@@ -13,7 +14,7 @@ class CellViewController: UITableViewCell {
     @IBOutlet weak var rocketNameLabel: UILabel!
     @IBOutlet weak var rocketDetailLabel: UILabel!
     
-    
+    @IBOutlet weak var favButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,5 +28,21 @@ class CellViewController: UITableViewCell {
     }
 
     @IBAction func favButtonClicked(_ sender: Any) {
+        
+        if favButton.tag == 0 {
+            favButton.setImage(UIImage(named: "heart1"), for: .normal)
+            favButton.tag = 1
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Rocket", in: context)
+            let newRocket = CoreDataModel(entity: entity!, insertInto: context)
+        
+        }else{
+            favButton.setImage(UIImage(named: "heart2"), for: .normal)
+            favButton.tag = 0
+        }
     }
+    
+    
 }
