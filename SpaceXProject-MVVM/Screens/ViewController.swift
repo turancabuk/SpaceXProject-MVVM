@@ -9,16 +9,20 @@ import UIKit
 import Kingfisher
 import CoreData
 
+struct RocketPresentation {
+    var isLiked: Bool
+    let rocket: RocketResponse
+}
+
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
    
     @IBOutlet weak var tableView: UITableView!
-
+  
     var viewModel: MainViewModel?
+    var selectedRocket: RocketPresentation!
     
-    var selectedRocket: RocketResponse!
-    
-    var response: [RocketResponse] = [] {
+    var response: [RocketPresentation] = [] {
     didSet {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -40,13 +44,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     private func fetchRecentRockets() {
         
-        viewModel?.fetchRockets(completion: { [weak self] rocketList in
-            if rocketList != nil {
-                self?.response = rocketList!
-                
-            } else {
-                print("alert")
+        viewModel?.fetchRockets(completion: { [weak self] response in
+            switch response {
+            case.success(let rocketList):
+                self?.response = rocketList
+            case.failure(let error):
+                print(error)
             }
+        
             
         })
        
@@ -60,11 +65,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CellViewController
-        let rocket = response[indexPath.row]
-        let url = URL(string: rocket.flickrImages?.last ?? "")
-        cell.rocketImageView.kf.setImage(with: url)
-        cell.rocketNameLabel.text = rocket.name
-        cell.rocketDetailLabel.text = rocket.welcomeDescription
+        let rocketPresentation = response[indexPath.row]
+        cell.configure(rocketPresentation: rocketPresentation)
+        cell.didLike = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.response[indexPath.row].isLiked = !rocketPresentation.isLiked
+            self.tableView.reloadData()
+        }
+        
         return cell
 
     }
@@ -77,7 +87,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         if segue.identifier == "toRocketDetailVC" {
             let destinationVC = segue.destination as! DetailViewController
-            destinationVC.chosenRocket = selectedRocket
+            destinationVC.chosenRocket = 
         }
     }
 

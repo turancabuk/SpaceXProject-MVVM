@@ -2,16 +2,15 @@
 //  CoreDataModel.swift
 //  SpaceXProject-MVVM
 //
-//  Created by Turan Çabuk on 19.10.2022.
+//  Created by Turan Çabuk on 20.10.2022.
 //
 
 import Foundation
 import CoreData
+import UIKit
 
-@objc(Rocket)
-class CoreDataModel: NSManagedObject {
+class Rocket: NSManagedObject{
     
-    @NSManaged var rocketName: String!
-    @NSManaged var rocketDescription: String!
-    @NSManaged var rocketId: NSNumber!
+    @NSManaged var rocketName: String
+    @NSManaged var rocketDescription: String
 }

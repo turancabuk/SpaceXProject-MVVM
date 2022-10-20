@@ -9,7 +9,7 @@ import Foundation
 
 class MainViewModel {
     
-    func fetchRockets(completion: @escaping ([RocketResponse]?) -> ()) {
+    func fetchRockets(completion: @escaping (Result<[RocketPresentation], Error>) -> ()) {
         
         guard let url = URL(string: "https://api.spacexdata.com/v4/rockets") else {
              return
@@ -20,12 +20,12 @@ class MainViewModel {
                     
                     if let error = error {
                         debugPrint(error)
-                            completion(nil)
+                        completion(.failure(error))
                     }
                     if let data = data {
                         do {
                             let response = try JSONDecoder().decode([RocketResponse].self, from: data)
-                            completion(response)
+                            completion(.success(response.map{RocketPresentation(isLiked: false, rocket: $0)}))
                             
                         } catch {
                             print(error)
