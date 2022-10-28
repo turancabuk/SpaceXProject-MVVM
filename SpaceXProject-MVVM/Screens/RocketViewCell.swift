@@ -8,17 +8,13 @@
 import UIKit
 import CoreData
 
-class CellViewController: UITableViewCell {
-    
+class RocketViewCell: UITableViewCell {
 
     var didLike: (() -> Void)?
-    var chosenRocket: RocketResponse?
-
    
     @IBOutlet weak var rocketImageView: UIImageView!
     @IBOutlet weak var rocketNameLabel: UILabel!
     @IBOutlet weak var rocketDetailLabel: UILabel!
-    
     @IBOutlet weak var favButton: UIButton!
     
     override func awakeFromNib() {

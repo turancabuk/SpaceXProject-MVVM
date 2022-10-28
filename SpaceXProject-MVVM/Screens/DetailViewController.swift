@@ -8,12 +8,12 @@
 import UIKit
 import Kingfisher
 
+
 class DetailViewController: UIViewController {
     
-    var didLike: (() -> Void)?
-
+    var didLike: ((RocketPresentation?) -> Void)?
     
-    var chosenRocket : RocketResponse?
+    var rocketPresentation : RocketPresentation?
 
     @IBOutlet weak var rocketDetailImageView: UIImageView!
     @IBOutlet weak var rocketDetailNameLabel: UILabel!
@@ -21,40 +21,31 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var favButton: UIButton!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-
-        
-        
-        
-        rocketDetailNameLabel.text = chosenRocket?.name
-        rocketDetailDescriptionLabel.text = chosenRocket?.welcomeDescription
-        let url = URL(string: "\(chosenRocket?.flickrImages?.first ?? "")")
-        rocketDetailImageView.kf.setImage(with: url)
-        
-        
-        
-
-
+        configure()
     }
-    func configure(rocketPresentation: RocketPresentation) {
-        let url = URL(string: rocketPresentation.rocket.flickrImages?.first ?? "")
+
+    func configure() {
+        let url = URL(string: rocketPresentation?.rocket.flickrImages?.first ?? "")
         rocketDetailImageView.kf.setImage(with: url)
-        rocketDetailNameLabel.text = rocketPresentation.rocket.name
-        rocketDetailDescriptionLabel.text = rocketPresentation.rocket.welcomeDescription
-        if rocketPresentation.isLiked {
+        rocketDetailNameLabel.text = rocketPresentation?.rocket.name ?? ""
+        rocketDetailDescriptionLabel.text = rocketPresentation?.rocket.welcomeDescription ?? ""
+        configureFavorite()
+    }
+
+    private func configureFavorite() {
+        if rocketPresentation?.isLiked == true {
             favButton.setImage(UIImage(named: "heart2"), for: .normal)
         } else {
             favButton.setImage(UIImage(named: "heart1"), for: .normal)
-
         }
     }
-
-    @IBAction func likeButtonDidClicked(_ sender: Any) {
-        
-        didLike?()
+    
+    @IBAction func favButtonClicked(_ sender: Any) {
+        didLike?(rocketPresentation)
+        rocketPresentation?.isLiked = !(rocketPresentation?.isLiked ?? false)
+        configureFavorite()
     }
 }

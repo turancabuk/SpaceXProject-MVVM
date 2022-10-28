@@ -9,26 +9,31 @@ import UIKit
 import Kingfisher
 import CoreData
 
-struct RocketPresentation {
+class RocketPresentation {
     var isLiked: Bool
     let rocket: RocketResponse
+    
+    init(isLiked: Bool, rocket: RocketResponse) {
+        self.isLiked = isLiked
+        self.rocket = rocket
+    }
 }
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-   
     @IBOutlet weak var tableView: UITableView!
   
     var viewModel: MainViewModel?
     var selectedRocket: RocketPresentation!
+    private var selectedPosition = 0
     
     var response: [RocketPresentation] = [] {
     didSet {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
-}
     
     
     override func viewDidLoad() {
@@ -40,6 +45,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         viewModel = MainViewModel()
         
         fetchRecentRockets()
+        
+       
         
     }
     private func fetchRecentRockets() {
@@ -64,14 +71,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return response.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CellViewController
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RocketViewCell
         let rocketPresentation = response[indexPath.row]
         cell.configure(rocketPresentation: rocketPresentation)
         cell.didLike = { [weak self] in
             guard let self = self else {
                 return
             }
-            self.response[indexPath.row].isLiked = !rocketPresentation.isLiked
+            let rocket = self.response[indexPath.row]
+            
+            if rocket.isLiked {
+                self.viewModel?.deleteRocketFavorite(rocket.rocket)
+            } else {
+                self.viewModel?.saveRocketFavorite(rocket.rocket)
+            }
+            
+            rocket.isLiked = !rocketPresentation.isLiked
             self.tableView.reloadData()
         }
         
@@ -79,22 +94,28 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        selectedRocket = response[indexPath.row]
-        performSegue(withIdentifier: "toRocketDetailVC", sender: nil)
+        selectedPosition = indexPath.row
+        selectedRocket = response[selectedPosition]
+        performSegue(withIdentifier: "toRocketDetailVC", sender: selectedRocket)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toRocketDetailVC" {
             let destinationVC = segue.destination as! DetailViewController
-            destinationVC.chosenRocket = 
+            destinationVC.rocketPresentation = sender as? RocketPresentation
+            destinationVC.didLike = { rocket in
+                if rocket?.isLiked == true, let rocket = rocket {
+                    self.viewModel?.deleteRocketFavorite(rocket.rocket)
+                } else {
+                    if let rocket = rocket {
+                        self.viewModel?.saveRocketFavorite(rocket.rocket)
+                    }
+                }
+                self.response[self.selectedPosition].isLiked = rocket?.isLiked ?? false
+                self.tableView.reloadData()
+            }
+            
         }
-    }
-
-    @IBAction func favButtonClicked(_ sender: Any) {
-        
-       
-
     }
 }
 

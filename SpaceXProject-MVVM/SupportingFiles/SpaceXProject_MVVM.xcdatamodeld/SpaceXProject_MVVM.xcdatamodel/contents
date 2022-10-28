@@ -2,8 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Rocket" representedClassName=".Rocket" syncable="YES">
         <attribute name="rocketDescription" optional="YES" attributeType="String"/>
-        <attribute name="rocketId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="rocketImage" optional="YES" attributeType="Binary"/>
+        <attribute name="rocketId" optional="YES" attributeType="String"/>
+        <attribute name="rocketImage" optional="YES" attributeType="String"/>
         <attribute name="rocketName" optional="YES" attributeType="String"/>
     </entity>
 </model>
